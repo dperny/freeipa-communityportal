@@ -160,6 +160,9 @@ def main():
     webapp.user = SelfServiceUserRegistration() # pylint: disable=attribute-defined-outside-init
     webapp.request_reset = RequestSelfServicePasswordReset()
     webapp.reset_password = SelfServicePasswordReset()
+    
+    cherrypy.config.update(
+        {'server.socket_host': '0.0.0.0'})
     cherrypy.quickstart(webapp, '/', conf)
 
 if __name__ == "__main__":
